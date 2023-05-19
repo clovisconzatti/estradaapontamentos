@@ -90,6 +90,20 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
+        'foccoOracle' => [
+            'driver'   => 'oracle',
+            'tns'      => env('DB_TNS', ''),
+            'host'     => env('DB_HOST', '172.168.246.205/F3IPRO'),
+            'port'     => env('DB_PORT', '34005'),
+            'database' => env('DB_DATABASE', 'FOCCO3I'),
+            'username' => env('DB_USERNAME', 'FOCCO_CONSULTA'),
+            'password' => env('DB_PASSWORD', 'CONSULTA3I08'),
+            'charset'  => env('DB_CHARSET', 'AL32UTF8'),
+            'prefix'   => env('DB_PREFIX', ''),
+            'options'   => [
+                PDO::ATTR_PERSISTENT => true,
+            ],
+    ],
 
     ],
 

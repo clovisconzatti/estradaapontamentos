@@ -59,7 +59,27 @@ class MenuSeeder extends Seeder
                 , 'rota'        =>'saida.listAll'
                 , 'icone'       =>'fas fa-cart-arrow-down'
             ],
-
+            [
+                'ordem'         =>'03.000'
+                , 'descricao'   =>'Usuarios'
+                , 'tipo'        =>'Título'
+                , 'rota'        =>''
+                , 'icone'       =>''
+            ],
+            [
+                'ordem'         =>'03.001'
+                , 'descricao'   =>'Menu'
+                , 'tipo'        =>'Link'
+                , 'rota'        =>'menu.listAll'
+                , 'icone'       =>'fas fa-cart-arrow-down'
+            ],
+            [
+                'ordem'         =>'03.002'
+                , 'descricao'   =>'Menu'
+                , 'tipo'        =>'Link'
+                , 'rota'        =>'menu.menuUsuario'
+                , 'icone'       =>'fas fa-cart-arrow-down'
+            ],
         ];
         menu::insert($menus);
     }

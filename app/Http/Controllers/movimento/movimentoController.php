@@ -25,6 +25,7 @@ class movimentoController extends Controller
             $filtros[]=['movimento.data','<=',$filtroDtFinal];
         }
 
+        $fornecedores = pessoa::where('fornecedor','Sim')->get();
         $movimentos = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
                                 ->leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
@@ -40,12 +41,15 @@ class movimentoController extends Controller
                                     ,'movimento.movimento'
                                 );
 
-        return view('movimento.listAll' , compact('movimentos'));
+        return view('movimento.listAll' , compact('movimentos','fornecedores'));
     }
 
     public function formAdd()
     {
-        return view('movimento.add');
+        $fornecedores = pessoa::where('fornecedor','Sim')->orderBy('nome')->get();
+        $produtos = produto::orderBy('produto')->get();
+
+        return view('movimento.add', compact('fornecedores','produtos'));
     }
     public function strore(Request $request)
     {

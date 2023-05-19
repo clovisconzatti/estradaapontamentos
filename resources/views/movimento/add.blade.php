@@ -22,28 +22,33 @@
             </div>
             <div class="form-group col-md-6">
                 Fornecedor
-                <select class="form-control limpar" type="text" name="fornecedor" id="fornecedor">
+                <select class="form-control limpar" type="text" name="pessoa" id="pessoa">
                     <option value="%">Todas</option>
-
+                    @foreach ($fornecedores as $fornecedor )
+                        <option value="{{ $fornecedor->id }}">{{ $fornecedor->nome }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group col-md-2">
                 NF
-                <input class="form-control" type="text" name="nf" id="nf">
+                <input class="form-control limpar" type="text" name="doc" id="doc">
             </div>
             <div class="form-group col-md-6">
                 Produto
                 <select class="form-control limpar" type="text" name="produto" id="produto">
                     <option value="%">Todas</option>
+                    @foreach ($produtos as $produto )
+                        <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
+                    @endforeach
 
                 </select>
             </div>
-            <div class="form-group col-md-2">
+            {{-- <div class="form-group col-md-2">
                 Movimento
                 <select class="form-control limpar" type="text" name="movimento" id="movimento" >
                     <option value="E">Entrada</option>
                 </select>
-            </div>
+            </div> --}}
         </div>
             <div class="row">
             <div class="form-group col-md-3">

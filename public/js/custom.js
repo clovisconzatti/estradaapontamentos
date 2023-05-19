@@ -193,65 +193,65 @@ $(document).ready(function(){
         }
     })
 
-        /**********************gravar produto **************************************************/
-        $(document).on('submit', 'form#cadastro-produto', function(event){
-            event.preventDefault()
-            var route = $(this).find('input#route').val();
-            var type = $(this).find('input#type').val();
-            var origem = $(this).find('#origem').val();
+    /**********************gravar produto **************************************************/
+    $(document).on('submit', 'form#cadastro-produto', function(event){
+        event.preventDefault()
+        var route = $(this).find('input#route').val();
+        var type = $(this).find('input#type').val();
+        var origem = $(this).find('#origem').val();
 
-            var codfocco = $(this).find('#codfocco').val();
-            var produto = $(this).find('#produto').val();
+        var codfocco = $(this).find('#codfocco').val();
+        var produto = $(this).find('#produto').val();
 
 
-        /********************************************************************************************* */
-              if(!codfocco || !produto){
-                Swal({
-                    title: 'Preencha todos os campos obrigatório',
-                    type: 'error',
-                    timer:3000
-                })
-            }else{
-                var dados= {
-                    'codfocco'          : codfocco
-                    ,'produto'          : produto
-                }
-                grava(dados,route,type,origem);
+    /********************************************************************************************* */
+        if(!codfocco || !produto){
+            Swal({
+                title: 'Preencha todos os campos obrigatório',
+                type: 'error',
+                timer:3000
+            })
+        }else{
+            var dados= {
+                'codfocco'          : codfocco
+                ,'produto'          : produto
             }
-        })
-
-
-/**********************gravar entrada **************************************************/
- $(document).on('submit', 'form#cadastro-movimento', function(event){
-    event.preventDefault()
-    var route = $(this).find('input#route').val();
-    var type = $(this).find('input#type').val();
-    var origem = $(this).find('#origem').val();
-
-    var data = $(this).find('#data').val();
-    var pessoa = $(this).find('#pessoa').val();
-    var doc = $(this).find('#doc').val();
-    var produto = $(this).find('#produto').val();
-    var movimento = $(this).find('#movimento').val();
-
-/********************************************************************************************* */
-      if(!data || !pessoa || !doc || !produto){
-        Swal({
-            title: 'Preencha todos os campos obrigatório',
-            type: 'error',
-            timer:3000
-        })
-    }else{
-        var dados= {
-            'data'          : data
-            ,'pessoa'       : pessoa
-            ,'doc'          : doc
-            ,'produto'      : produto
-            ,'movimento'    : movimento
+            grava(dados,route,type,origem);
         }
-        grava(dados,route,type,origem);
-    }
-})
+    })
+
+
+    /**********************gravar entrada **************************************************/
+    $(document).on('submit', 'form#cadastro-movimento', function(event){
+        event.preventDefault()
+        var route = $(this).find('input#route').val();
+        var type = $(this).find('input#type').val();
+        var origem = $(this).find('#origem').val();
+
+        var data = $(this).find('#data').val();
+        var pessoa = $(this).find('#pessoa').val();
+        var doc = $(this).find('#doc').val();
+        var produto = $(this).find('#produto').val();
+        var movimento = 'E';
+
+    /********************************************************************************************* */
+        if(!data || !pessoa || !doc || !produto){
+            Swal({
+                title: 'Preencha todos os campos obrigatório',
+                type: 'error',
+                timer:3000
+            })
+        }else{
+            var dados= {
+                'data'          : data
+                ,'pessoa'       : pessoa
+                ,'doc'          : doc
+                ,'produto'      : produto
+                ,'movimento'    : movimento
+            }
+            grava(dados,route,type,origem);
+        }
+    })
 
 
 

@@ -18,11 +18,11 @@
         <div class="row">
             <div class="form-group col-md-2">
                 Codigo Focco
-                <input class="form-control" type="text" name="codfocco" id="codfocco">
+                <input class="form-control limpar" type="text" name="codfocco" id="codfocco">
             </div>
             <div class="form-group col-md-6">
                 Produto
-                <input class="form-control" type="text" name="produto" id="produto">
+                <input class="form-control limpar" type="text" name="produto" id="produto">
             </div>
             </div>
         <div class="row">

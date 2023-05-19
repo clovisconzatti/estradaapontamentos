@@ -13,10 +13,18 @@ class UserSeeder extends Seeder
     {
         User::truncate();
 
-        User::create([
-            'name' => 'Clovis Dorival Conzatti',
-            'email' => 'clovis@plannersolucoes.com.br',
-            'password' => bcrypt('Cczt4752')
-        ]);
+        $User=[
+            [
+                'name' => 'Clovis Dorival Conzatti',
+                'email' => 'clovis@plannersolucoes.com.br',
+                'password' => bcrypt('Cczt4752')
+            ],
+            [
+                'name' => 'Evandro',
+                'email' => 'evandro.costa@estrtada.ind.br',
+                'password' => bcrypt('12345678')
+            ]
+        ];
+        User::insert($User);
     }
 }

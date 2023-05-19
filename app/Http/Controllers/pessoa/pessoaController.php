@@ -7,12 +7,20 @@ use App\Models\pessoa;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\DB;
+
 Paginator::useBootstrap();
 
 class pessoaController extends Controller
 {
 
     public function listAll(Request $request ){
+
+        $sql="SELECT * FROM F3I_ETIQUETAS_LAYOUTS";
+        $recurso = DB::connection('foccoOracle')->select($sql);
+
+        dd($recurso);
+
         $filtros = [];
 
         $pessoa  = ($request->get('pessoa'))? $request->get('pessoa') : session('pessoa');
@@ -21,7 +29,7 @@ class pessoaController extends Controller
             $filtros[]=['pessoa.nome','like','%'.$pessoa.'%'];
         }
 
-        $pessoas = pessoa::where($filtros)->orderBy('nome')->get();
+        $pessoas = pessoa::where($filtros)->orderBy('nome')->paginate(7);
 
         return view('pessoa.listAll' , compact('pessoas'));
     }

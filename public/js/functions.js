@@ -165,7 +165,7 @@ function grava(dados,route,type,origem){
                 Swal({
                     title: title,
                     type: 'success',
-                    timer:3000
+                    timer:1000
                 })
                 if(type!='POST'){
                     window.location.replace(url+'/'+origem);
@@ -173,6 +173,14 @@ function grava(dados,route,type,origem){
                     $('.limpar').val('');
                     $('select').trigger('chosen:updated');
                 }
+            }else{
+                Swal({
+                    title: 'Erro no cadastro',
+                    type: 'error',
+                    text: result
+                    // timer:3000
+                })
+
             }
         }
     })

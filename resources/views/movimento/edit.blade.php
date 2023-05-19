@@ -15,7 +15,7 @@
             </div>
             <div class="form-group col-md-6">
                 Fornecedor
-                <select class="form-control limpar" type="text" name="fornecedor" id="fornecedor">
+                <select class="form-control limpar" type="text" name="pessoa" id="pessoa">
                     <option value="%">Todas</option>
                     @foreach ($pessoas as $pessoa )
                         <option value="{{ $pessoa->id }}">{{ $pessoa->nome }}</option>
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group col-md-2">
                 NF
-                <input class="form-control" type="text" name="nf" id="nf">
+                <input class="form-control" type="text" name="doc" id="doc">
             </div>
             <div class="form-group col-md-6">
                 Produto

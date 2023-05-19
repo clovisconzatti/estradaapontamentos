@@ -5,7 +5,6 @@ namespace App\Http\Controllers\saida;
 use App\Http\Controllers\Controller;
 use App\Models\movimento;
 use Illuminate\Http\Request;
-use Saida;
 
 class saidaController extends Controller
 {
@@ -76,7 +75,7 @@ class saidaController extends Controller
     {
 
         try{
-            $saida = saida::find($id);
+            $saida = Saida::find($id);
             $saida->data        = $request->data;
             $saida->pessoa      = $request->pessoa;
             $saida->doc         = $request->doc;

@@ -15,7 +15,7 @@ class Produto extends Migration
     {
         Schema::create('produto', function(Blueprint $table){
             $table->increments('id');
-            $table->integer('codfocco')->nullable();
+            $table->integer('codfocco')->unique();
             $table->string('produto',50)->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -29,6 +29,6 @@ class Produto extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('produto');
     }
 }

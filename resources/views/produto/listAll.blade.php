@@ -83,5 +83,5 @@
         </tbody>
     </table>
 
-    {{-- {{$Operadores->links()}} --}}
+    {{$produtos->links()}}
 @endsection

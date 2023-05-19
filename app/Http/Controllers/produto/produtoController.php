@@ -5,6 +5,9 @@ namespace App\Http\Controllers\produto;
 use App\Http\Controllers\Controller;
 use App\Models\produto;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+Paginator::useBootstrap();
 
 class produtoController extends Controller
 {
@@ -18,7 +21,7 @@ class produtoController extends Controller
             $filtros[]=['produto.produto','like','%'.$produto.'%'];
         }
 
-        $produtos = produto::where($filtros)->orderBy('produto')->get();
+        $produtos = produto::where($filtros)->orderBy('produto')->paginate(2);
 
         return view('produto.listAll' , compact('produtos'));
     }

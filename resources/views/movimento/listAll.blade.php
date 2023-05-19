@@ -64,11 +64,6 @@
                     <td>{{ $movimento->pessoa }}  </td>
                     <td>{{ $movimento->doc }}  </td>
                     <td>{{ $movimento->produto }}  </td>
-                    <td>
-                        <a class="btn btn-info" href="{{route('movimento.movimentoAnexo',[$movimento->id])}}" target="_blank">
-                            <i class="fa fa-upload"></i>
-                        </a>
-                    </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">
