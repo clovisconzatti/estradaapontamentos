@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Menu\MenuController;
 use App\Http\Controllers\pessoa\pessoaController;
 use App\Http\Controllers\produto\produtoController;
+use App\Http\Controllers\movimento\movimentoController;
+use App\Http\Controllers\saida\saidaController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
@@ -63,5 +65,26 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('produto/edit/{produto}',[produtoController::class,'edit'])->name('produto.edit');
         Route::delete('produto/destroy/{produto}',[produtoController::class,'destroy'])->name('produto.destroy');
     });
+
+   /********************************** entrada ***************************************************************/
+   Route::group(['namespace' => 'movimento'], function () {
+    Route::get('movimento',[movimentoController::class,'listAll'])->name('movimento.listAll');
+    Route::get('movimento/novo',[movimentoController::class,'formAdd'])->name('movimento.formAdd');
+    Route::get('movimento/editar/{movimento}',[movimentoController::class,'formEdit'])->name('movimento.formEdit');
+    Route::post('movimento/store',[movimentoController::class,'strore'])->name('movimento.store');
+    Route::patch('movimento/edit/{movimento}',[movimentoController::class,'edit'])->name('movimento.edit');
+    Route::delete('movimento/destroy/{movimento}',[movimentoController::class,'destroy'])->name('movimento.destroy');
+
+});
+/********************************** saida ***************************************************************/
+Route::group(['namespace' => 'saida'], function () {
+    Route::get('saida',[saidaController::class,'listAll'])->name('saida.listAll');
+    Route::get('saida/novo',[saidaController::class,'formAdd'])->name('saida.formAdd');
+    Route::get('saida/editar/{saida}',[saidaController::class,'formEdit'])->name('saida.formEdit');
+    Route::post('saida/store',[saidaController::class,'strore'])->name('saida.store');
+    Route::patch('saida/edit/{saida}',[saidaController::class,'edit'])->name('saida.edit');
+    Route::delete('saida/destroy/{saida}',[saidaController::class,'destroy'])->name('saida.destroy');
+
+});
 
 });

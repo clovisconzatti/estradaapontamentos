@@ -45,6 +45,21 @@ class MenuSeeder extends Seeder
                 , 'rota'        =>''
                 , 'icone'       =>''
             ],
+            [
+                'ordem'         =>'02.001'
+                , 'descricao'   =>'Entradas'
+                , 'tipo'        =>'Link'
+                , 'rota'        =>'movimento.listAll'
+                , 'icone'       =>'fas fa-cubes'
+            ],
+            [
+                'ordem'         =>'02.002'
+                , 'descricao'   =>'Saidas'
+                , 'tipo'        =>'Link'
+                , 'rota'        =>'saida.listAll'
+                , 'icone'       =>'fas fa-cart-arrow-down'
+            ],
+
         ];
         menu::insert($menus);
     }
