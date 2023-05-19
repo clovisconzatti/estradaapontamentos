@@ -12,20 +12,32 @@ class movimentoController extends Controller
 {
 
     public function listAll(Request $request ){
-        $filtros = [];
+        $filtros=[];
 
         $filtroDtInicial  = ($request->get('dtInicial'))? $request->get('dtInicial') : session('filtroDtInicial');
         session()->put('filtroDtInicial', $filtroDtInicial);
         $filtroDtFinal  = ($request->get('dtFinal'))? $request->get('dtFinal') : session('filtroDtFinal');
         session()->put('filtroDtFinal', $filtroDtFinal);
+        $filtrofornecedor  = ($request->get('pessoa'))? $request->get('pessoa') : session('filtrofornecedor');
+        session()->put('filtrofornecedor', $filtrofornecedor);
+        $filtroproduto  = ($request->get('produto'))? $request->get('produto') : session('filtroproduto');
+        session()->put('filtroproduto', $filtroproduto);
 
+        if($filtrofornecedor){
+            $filtros[]=['pessoa.nome','like','%'.$filtrofornecedor.'%'];
+        }
+
+        if($filtroproduto){
+            $filtros[]=['produto.produto','like','%'.$filtroproduto.'%'];
+        }
 
         if($filtroDtFinal){
-            $filtros[]=['movimento.data','>=',$filtroDtInicial];
-            $filtros[]=['movimento.data','<=',$filtroDtFinal];
+            $filtros[]=['apontamento.data','>=',$filtroDtInicial];
+            $filtros[]=['apontamento.data','<=',$filtroDtFinal];
         }
 
         $fornecedores = pessoa::where('fornecedor','Sim')->get();
+        $produtos = produto::get();
         $movimentos = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
                                 ->leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
@@ -41,7 +53,7 @@ class movimentoController extends Controller
                                     ,'movimento.movimento'
                                 );
 
-        return view('movimento.listAll' , compact('movimentos','fornecedores'));
+        return view('movimento.listAll' , compact('movimentos','fornecedores','produtos','filtrofornecedor','filtroproduto'));
     }
 
     public function formAdd()

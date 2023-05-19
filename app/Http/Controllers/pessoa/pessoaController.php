@@ -16,10 +16,10 @@ class pessoaController extends Controller
 
     public function listAll(Request $request ){
 
-        $sql="SELECT * FROM F3I_ETIQUETAS_LAYOUTS";
-        $recurso = DB::connection('foccoOracle')->select($sql);
+      // $sql="SELECT * FROM F3I_ETIQUETAS_LAYOUTS";
+      //  $recurso = DB::connection('foccoOracle')->select($sql);
 
-        dd($recurso);
+      //  dd($recurso);
 
         $filtros = [];
 

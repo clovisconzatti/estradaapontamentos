@@ -30,13 +30,14 @@
             <form method="get" action="{{ route('movimento.listAll') }}">
                 @csrf
                 <div class="row">
-                    <div class="form-group col-md-3">
-                        Data inicial:
-                        <input class="form-control" type="date" name="dtInicial">
+                    <div class="form-group col-md-5">
+                        Fornecedor:
+                        <input class="form-control" type="text" name="fornecedor" value="{{ $filtrofornecedor }}">
                     </div>
-                    <div class="form-group col-md-3">
-                        Data final:
-                        <input class="form-control" type="date" name="dtFinal" >
+                    <div class="form-group col-md-5">
+                        Pessoa:
+                        <input class="form-control" type="text" name="produto" value="{{ $filtroproduto }}">
+                    </div>
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit" >
@@ -50,18 +51,18 @@
     <table class="table table-bordered table-condensed table-striped">
         <thead>
             <tr>
-                <th width="15%" data-field="name">Data</th>
-                <th width="30%" data-field="name">Fornecedor</th>
-                <th width="10%" data-field="name">NF</th>
-                <th width="30%" data-field="name">Produto</th>
-                <th width="10%" data-field="">Ação</th>
+                <th width="15%">Data</th>
+                <th width="30%">Fornecedor</th>
+                <th width="10%">NF</th>
+                <th width="30%">Produto</th>
+                <th width="10%">Ação</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($movimentos as $movimento)
                 <tr>
                     <td align="center"> {{ date('d/m/Y',strtotime($movimento->data)) }} </td>
-                    <td>{{ $movimento->pessoa }}  </td>
+                    <td>{{ $movimento->nome }}  </td>
                     <td>{{ $movimento->doc }}  </td>
                     <td>{{ $movimento->produto }}  </td>
                     <td align="center">
@@ -77,13 +78,7 @@
                                     <span>Editar</span>
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    {{-- <form action=" {{ route('menu.destroy',['menu'=> $menu->id ]) }} " method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <input type="hidden" name='menu' value=" {{ $menu->id }} ">
-                                        <i class="far fa-trash-alt"></i>
-                                        <input type="submit" class="btn btn-default delete"  value="Eliminar">
-                                    </form> --}}
+
                                 </a>
                             </div>
                         </div>
