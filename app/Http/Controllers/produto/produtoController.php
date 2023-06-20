@@ -21,7 +21,7 @@ class produtoController extends Controller
             $filtros[]=['produto.produto','like','%'.$produto.'%'];
         }
 
-        $produtos = produto::where($filtros)->orderBy('produto')->paginate(2);
+        $produtos = produto::where($filtros)->orderBy('produto')->paginate(7);
 
         return view('produto.listAll' , compact('produtos'));
     }

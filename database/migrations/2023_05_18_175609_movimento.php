@@ -20,6 +20,7 @@ class Movimento extends Migration
             $table->integer('doc')->nullable();
             $table->integer('produto')->nullable();
             $table->string('movimento',1)->nullable();
+            $table->integer('quantidade')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

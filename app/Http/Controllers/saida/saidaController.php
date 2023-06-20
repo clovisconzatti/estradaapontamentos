@@ -4,6 +4,8 @@ namespace App\Http\Controllers\saida;
 
 use App\Http\Controllers\Controller;
 use App\Models\movimento;
+use App\Models\pessoa;
+use App\Models\produto;
 use Illuminate\Http\Request;
 
 class saidaController extends Controller
@@ -24,6 +26,8 @@ class saidaController extends Controller
             $filtros[]=['movimento.data','<=',$filtroDtFinal];
         }
 
+        $clientes = pessoa::where('cliente','Sim')->get();
+        $produtos = produto::get();
         $saidas = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
                                 ->leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
@@ -37,26 +41,32 @@ class saidaController extends Controller
                                     ,'produto.id'
                                     ,'produto.produto'
                                     ,'movimento.movimento'
+                                    ,'movimento.quantidade'
                                 );
 
-        return view('saida.listAll' , compact('saidas'));
+        return view('saida.listAll' , compact('saidas','clientes','produtos','filtroDtInicial','filtroDtFinal'));
     }
 
     public function formAdd()
     {
-        return view('saida.add');
+        $clientes = pessoa::where('cliente','Sim')->orderBy('nome')->get();
+        $produtos = produto::orderBy('produto')->get();
+
+        return view('saida.add', compact('clientes','produtos'));
     }
+
     public function strore(Request $request)
     {
         try{
-            $saida = new saida([
+            $saida = new movimento([
                 "id"            => $request->id
                 ,"data"         => $request->data
                 ,"pessoa"       => $request->pessoa
                 ,"doc"          => $request->doc
                 ,"produto"      => $request->produto
                 ,"movimento"    => $request->movimento
-                ]);
+                ,"quantidade"   => $request->quantidade
+            ]);
             $saida->save();
         }catch(\Exception $e){
             return response()->json($saida);
@@ -75,12 +85,13 @@ class saidaController extends Controller
     {
 
         try{
-            $saida = Saida::find($id);
+            $saida = movimento::find($id);
             $saida->data        = $request->data;
             $saida->pessoa      = $request->pessoa;
             $saida->doc         = $request->doc;
             $saida->produto     = $request->produto;
             $saida->movimento   = $request->movimento;
+            $saida->quantidade  = $request->quantidade;
             $saida->save();
         }catch(\Exception $e){
             return response()->json($saida);

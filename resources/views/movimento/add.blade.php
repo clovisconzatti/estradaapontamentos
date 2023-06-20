@@ -11,14 +11,9 @@
         <input type="hidden" name="origem" id="origem" value="movimento">
 
         <div class="row">
-            {{-- <div class="form-group col-md-3"></div> --}}
-            {{-- <div class="form-group col-md-4">Manhã</div> --}}
-            {{-- <div class="form-group col-md-4">Tarde</div> --}}
-        </div>
-        <div class="row">
             <div class="form-group col-md-2">
                 Data
-                <input class="form-control" type="date" name="data" id="data">
+                <input class="form-control" type="date" name="data" id="data" value="{{date('Y-m-d')}}">
             </div>
             <div class="form-group col-md-6">
                 Fornecedor
@@ -40,15 +35,13 @@
                     @foreach ($produtos as $produto )
                         <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
                     @endforeach
-
                 </select>
             </div>
-            {{-- <div class="form-group col-md-2">
-                Movimento
-                <select class="form-control limpar" type="text" name="movimento" id="movimento" >
-                    <option value="E">Entrada</option>
-                </select>
-            </div> --}}
+            <div class="form-group col-md-2">
+                Quantidade
+                <input class="form-control limpar" type="" name="quantidade" id="quantidade" >
+            </select>
+            </div>
         </div>
             <div class="row">
             <div class="form-group col-md-3">

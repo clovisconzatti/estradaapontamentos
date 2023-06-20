@@ -233,9 +233,10 @@ $(document).ready(function(){
         var doc = $(this).find('#doc').val();
         var produto = $(this).find('#produto').val();
         var movimento = 'E';
+        var quantidade = $(this).find('#quantidade').val();
 
     /********************************************************************************************* */
-        if(!data || !pessoa || !doc || !produto){
+        if(!data || !pessoa || !doc || !produto || !quantidade){
             Swal({
                 title: 'Preencha todos os campos obrigatório',
                 type: 'error',
@@ -248,11 +249,44 @@ $(document).ready(function(){
                 ,'doc'          : doc
                 ,'produto'      : produto
                 ,'movimento'    : movimento
+                ,'quantidade'   : quantidade
             }
             grava(dados,route,type,origem);
         }
     })
+ /**********************gravar saida **************************************************/
+ $(document).on('submit', 'form#cadastro-saida', function(event){
+    event.preventDefault()
+    var route = $(this).find('input#route').val();
+    var type = $(this).find('input#type').val();
+    var origem = $(this).find('#origem').val();
 
+    var data = $(this).find('#data').val();
+    var pessoa = $(this).find('#pessoa').val();
+    var doc = $(this).find('#doc').val();
+    var produto = $(this).find('#produto').val();
+    var movimento = 'S';
+    var quantidade = $(this).find('#quantidade').val();
+
+/********************************************************************************************* */
+    if(!data){
+        Swal({
+            title: 'Preencha todos os campos obrigatório',
+            type: 'error',
+            timer:3000
+        })
+    }else{
+        var dados= {
+            'data'          : data
+            ,'pessoa'       : pessoa
+            ,'doc'          : doc
+            ,'produto'      : produto
+            ,'movimento'    : movimento
+            ,'quantidade'   : quantidade
+        }
+        grava(dados,route,type,origem);
+    }
+})
 
 
 })

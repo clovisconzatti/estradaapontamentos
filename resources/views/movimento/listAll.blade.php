@@ -55,6 +55,7 @@
                 <th width="30%">Fornecedor</th>
                 <th width="10%">NF</th>
                 <th width="30%">Produto</th>
+                <th width="10%">Quantidade</th>
                 <th width="10%">Ação</th>
             </tr>
         </thead>
@@ -65,6 +66,7 @@
                     <td>{{ $movimento->nome }}  </td>
                     <td>{{ $movimento->doc }}  </td>
                     <td>{{ $movimento->produto }}  </td>
+                    <td>{{ $movimento->quantidade }}  </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">

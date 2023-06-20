@@ -54,6 +54,7 @@
                 <th width="30%" data-field="name">Fornecedor</th>
                 <th width="10%" data-field="name">NF</th>
                 <th width="30%" data-field="name">Produto</th>
+                <th width="10%" data-field="name">Quantidade</th>
                 <th width="10%" data-field="">Ação</th>
             </tr>
         </thead>
@@ -64,10 +65,8 @@
                     <td align="">{{ $movimento->pessoa }}  </td>
                     <td align="">{{ $movimento->doc }}  </td>
                     <td align="">{{ $movimento->produto }}  </td>
+                    <td align="">{{ $movimento->quantidade }}  </td>
                     <td align="">
-                        <a class="btn btn-info" href="{{route('movimento.movimentoAnexo',[$movimento->id])}}" target="_blank">
-                            <i class="fa fa-upload"></i>
-                        </a>
                     </td>
                     <td align="center">
                         <div class="btn-group-vertical">

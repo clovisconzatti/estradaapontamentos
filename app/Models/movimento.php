@@ -16,6 +16,7 @@ class movimento extends Model
         , 'doc'
         , 'produto'
         , 'movimento'
+        , 'quantidade'
 
     ];
 

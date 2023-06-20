@@ -32,10 +32,10 @@ class movimentoController extends Controller
         }
 
         if($filtroDtFinal){
-            $filtros[]=['apontamento.data','>=',$filtroDtInicial];
-            $filtros[]=['apontamento.data','<=',$filtroDtFinal];
+            $filtros[]=['movimento.data','>=',$filtroDtInicial];
+            $filtros[]=['movimento.data','<=',$filtroDtFinal];
         }
-
+        // dd($filtros);
         $fornecedores = pessoa::where('fornecedor','Sim')->get();
         $produtos = produto::get();
         $movimentos = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
@@ -51,6 +51,7 @@ class movimentoController extends Controller
                                     ,'produto.id'
                                     ,'produto.produto'
                                     ,'movimento.movimento'
+                                    ,'movimento.quantidade'
                                 );
 
         return view('movimento.listAll' , compact('movimentos','fornecedores','produtos','filtrofornecedor','filtroproduto'));
@@ -73,6 +74,7 @@ class movimentoController extends Controller
                 ,"doc"          => $request->doc
                 ,"produto"      => $request->produto
                 ,"movimento"    => $request->movimento
+                ,"quantidade"   => $request->quantidade
                 ]);
             $movimento->save();
         }catch(\Exception $e){
@@ -98,6 +100,7 @@ class movimentoController extends Controller
             $movimento->doc         = $request->doc;
             $movimento->produto     = $request->produto;
             $movimento->movimento   = $request->movimento;
+            $movimento->quantidade  = $request->quantidade;
             $movimento->save();
         }catch(\Exception $e){
             return response()->json($movimento);

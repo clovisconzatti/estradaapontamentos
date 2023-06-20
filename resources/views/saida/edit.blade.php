@@ -36,10 +36,8 @@
                 </select>
             </div>
             <div class="form-group col-md-2">
-                Movimento
-                <select class="form-control limpar" type="text" name="movimento" id="movimento" >
-                    <option value="E">Emtrada</option>
-                </select>
+                Quantidade
+                <input class="form-control" type="text" name="quantidade" id="quantidade">
             </div>
         <div class="row">
             <div class="form-group col-md-3">

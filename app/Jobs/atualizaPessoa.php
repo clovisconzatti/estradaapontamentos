@@ -27,7 +27,7 @@ class atualizaPessoa implements ShouldQueue
 
     public function pessoa()
     {
-        dd('aqui');
         // comando
+
     }
 }

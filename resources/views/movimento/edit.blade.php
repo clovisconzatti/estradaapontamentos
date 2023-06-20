@@ -41,6 +41,11 @@
                     <option value="E">Emtrada</option>
                 </select>
             </div>
+            <div class="form-group col-md-2">
+                Quantidade
+                <input class="form-control limpar" type="number" name="quantidade" id="quantidade" >
+            </select>
+            </div>
         <div class="row">
             <div class="form-group col-md-3">
                 <button type="submit" name="salvar" value="{{$pessoa->id}}" id="salvar" class="btn btn-success btn-block">
