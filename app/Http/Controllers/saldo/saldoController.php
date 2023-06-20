@@ -83,16 +83,18 @@ class saldoController extends Controller
         $fileName = 'Estoque.pdf';
         $mpdf = new PDF([
             'format' => 'A4',
-            'margin_top'    => intval(10),
-            'margin_right'  => intval(5),
-            'margin_bottom' => intval(10),
-            'margin_left'   => intval(5),
-            'margin_header' => intval(0),
-            'margin_footer' => intval(0)
+            'margin_top'    => '10',
+            'margin_right'  => '10',
+            'margin_bottom' => '10',
+            'margin_left'   => '10',
+            'margin_header' => '10',
+            'margin_footer' => '10'
             ]);
         $html = view('pdf.pdf', compact('saldo'));
         $html = $html->render();
         $mpdf->AddPage('P');
         $mpdf->WriteHTML($html);
+        $mpdf->Output($fileName, 'I');
+
     }
 }

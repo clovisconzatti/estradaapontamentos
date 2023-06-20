@@ -19,7 +19,7 @@
 
     <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            <form method="get" id='formulario' action="">
+            <form method="get" id='formulario' action="" target="">
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-3">
@@ -73,11 +73,13 @@
             $(document).on('click','#tela',function(event){
                 event.preventDefault();
                 $(document).find('#formulario').attr('action')
+                $(document).find('#formulario').attr('target');
                 $(document).find('#formulario').submit()
             })
             $(document).on('click','#pdf',function(event){
                 event.preventDefault();
                 $(document).find('#formulario').attr('action',url+'/saldo/pdf')
+                $(document).find('#formulario').attr('target',"_blank");
                 $(document).find('#formulario').submit()
             })
         })
