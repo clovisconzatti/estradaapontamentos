@@ -61,7 +61,7 @@
         $(document).ready(function(){
 
             $('button#sair').click(function(){
-                $(location).attr('href',url+'/movimento');
+                $(location).attr('href',url+'/saida');
             })
         })
     </script>

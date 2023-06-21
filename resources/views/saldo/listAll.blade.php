@@ -19,7 +19,7 @@
 
     <div class="collapse" id="collapseExample">
         <div class="card card-body">
-            <form method="get" id='formulario' action="" target="">
+            <form method="get" id='formulario' action="">
                 @csrf
                 <div class="row">
                     <div class="form-group col-md-3">
@@ -83,7 +83,6 @@
                 $(document).find('#formulario').submit()
             })
         })
-    </script>
-@endsection
+    </script>@endsection
 
 

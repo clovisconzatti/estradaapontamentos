@@ -51,7 +51,7 @@
         <thead>
             <tr>
                 <th width="15%" data-field="name">Data</th>
-                <th width="30%" data-field="name">Fornecedor</th>
+                <th width="30%" data-field="name">Cliente</th>
                 <th width="10%" data-field="name">NF</th>
                 <th width="30%" data-field="name">Produto</th>
                 <th width="10%" data-field="name">Quantidade</th>
@@ -62,12 +62,10 @@
             @foreach ($saidas as $movimento)
                 <tr>
                     <td align="center"> {{ date('d/m/Y',strtotime($movimento->data)) }} </td>
-                    <td align="">{{ $movimento->pessoa }}  </td>
+                    <td align="">{{ $movimento->nome }}  </td>
                     <td align="">{{ $movimento->doc }}  </td>
                     <td align="">{{ $movimento->produto }}  </td>
                     <td align="">{{ $movimento->quantidade }}  </td>
-                    <td align="">
-                    </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">
@@ -76,7 +74,7 @@
                                 <span>Ação</span>
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{route('movimento.formEdit', $movimento->id)}}">
+                                <a class="dropdown-item" href="{{route('saida.formEdit', $movimento->id)}}">
                                     <i class="far fa-edit"></i>&nbsp;&nbsp;&nbsp;
                                     <span>Editar</span>
                                 </a>

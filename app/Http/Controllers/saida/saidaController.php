@@ -31,8 +31,9 @@ class saidaController extends Controller
         $saidas = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
                                 ->leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
+                                ->where('movimento.movimento','=','S')
                                 ->orderBy('data')
-                                ->get(
+                                ->get([
                                     'movimento.id'
                                     ,'movimento.data'
                                     ,'movimento.pessoa'
@@ -42,7 +43,7 @@ class saidaController extends Controller
                                     ,'produto.produto'
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'
-                                );
+                                ]);
 
         return view('saida.listAll' , compact('saidas','clientes','produtos','filtroDtInicial','filtroDtFinal'));
     }

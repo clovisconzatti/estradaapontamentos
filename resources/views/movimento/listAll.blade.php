@@ -30,14 +30,31 @@
             <form method="get" action="{{ route('movimento.listAll') }}">
                 @csrf
                 <div class="row">
-                    <div class="form-group col-md-5">
+                    <div class="form-group col-md-3">
+                        Data inicial:
+                        <input class="form-control" type="date" name="dtInicial">
+                    </div>
+                    <div class="form-group col-md-3">
+                        Data final:
+                        <input class="form-control" type="date" name="dtFinal" >
+                    </div>
+                    <div class="form-group col-md-3">
                         Fornecedor:
-                        <input class="form-control" type="text" name="fornecedor" value="{{ $filtrofornecedor }}">
+                        <select class="form-control limpar" type="text" name="pessoa" id="pessoa">
+                            <option value="">Todas</option>
+                            @foreach ($movimentos as $fornecedor )
+                                <option value="{{ $fornecedor->id }}" {{($filtrofornecedor == $fornecedor->id)? 'selected' : ''}}>{{ $fornecedor->nome }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="form-group col-md-5">
-                        Pessoa:
-                        <input class="form-control" type="text" name="produto" value="{{ $filtroproduto }}">
-                    </div>
+                    <div class="form-group col-md-3">
+                        Produto:
+                        <select class="form-control limpar" type="text" name="produto" id="produto">
+                            <option value="">Todas</option>
+                            @foreach ($produtos as $produto )
+                                <option value="{{ $produto->id }}" {{($filtroproduto == $produto->id)? 'selected' : ''}}>{{ $produto->produto }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit" >
@@ -80,13 +97,11 @@
                                     <span>Editar</span>
                                 </a>
                                 <a class="dropdown-item" href="#">
-
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
             @endforeach
         </tbody>
     </table>

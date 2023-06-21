@@ -8,7 +8,7 @@
                 </h3>
             </td>
             <td width="50%" align="center">
-                <h3>e
+                <h3>
                     <a class="cor-digiliza" href="{{route('produto.formAdd')}}">
                         <i class="fas fa-plus-circle"></i>&nbsp;&nbsp;&nbsp;
                         <span>Novo</span>
