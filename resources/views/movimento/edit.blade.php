@@ -16,7 +16,6 @@
             <div class="form-group col-md-6">
                 Fornecedor
                 <select class="form-control" type="text" name="pessoa" id="pessoa" value="{{ $movimento->pessoa }}">
-                    {{-- <option value="%">Todas</option> --}}
                     @foreach ($fornecedores as $fornecedor )
                         <option value="{{ $fornecedor->id }}">{{ $fornecedor->nome }}</option>
                     @endforeach
@@ -29,7 +28,6 @@
             <div class="form-group col-md-6">
                 Produto
                 <select class="form-control limpar" type="text" name="produto" id="produto" value="{{ $movimento->produto }}" >
-                    {{-- <option value="%">Todas</option> --}}
                     @foreach ($produtos as $produto )
                         <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
                     @endforeach

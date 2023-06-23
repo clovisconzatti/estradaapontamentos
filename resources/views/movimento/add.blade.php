@@ -13,11 +13,11 @@
         <div class="row">
             <div class="form-group col-md-2">
                 Data
-                <input class="form-control" type="date" name="data" id="data" value="{{date('Y-m-d')}}">
+                <input class="form-control" type="date" name="data" id="data" value="{{date('Y-m-d')}}" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-7">
                 Fornecedor
-                <select class="form-control limpar" type="text" name="pessoa" id="pessoa">
+                <select class="form-control limpar" type="text" name="pessoa" id="pessoa" required>
                     <option value="%">Todas</option>
                     @foreach ($fornecedores as $fornecedor )
                         <option value="{{ $fornecedor->id }}">{{ $fornecedor->nome }}</option>
@@ -26,11 +26,11 @@
             </div>
             <div class="form-group col-md-2">
                 NF
-                <input class="form-control limpar" type="text" name="doc" id="doc">
+                <input class="form-control limpar" type="text" name="doc" id="doc" required>
             </div>
             <div class="form-group col-md-6">
                 Produto
-                <select class="form-control limpar" type="text" name="produto" id="produto">
+                <select class="form-control limpar" type="text" name="produto" id="produto" required>
                     <option value="%">Todas</option>
                     @foreach ($produtos as $produto )
                         <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
@@ -39,8 +39,11 @@
             </div>
             <div class="form-group col-md-2">
                 Quantidade
-                <input class="form-control limpar" type="" name="quantidade" id="quantidade" >
-            </select>
+                <input class="form-control limpar" type="" name="quantidade" id="quantidade" required>
+            </div>
+                <div class="form-group col-md-11">
+            Observação
+            <textarea class="form-control limpar" type="text" name="obs" id="obs" maxLength="100" role="3"></textarea>
             </div>
         </div>
             <div class="row">

@@ -50,12 +50,14 @@
     <table class="table table-bordered table-condensed table-striped">
         <thead>
             <tr>
-                <th width="15%" data-field="name">Data</th>
-                <th width="30%" data-field="name">Cliente</th>
-                <th width="10%" data-field="name">NF</th>
-                <th width="30%" data-field="name">Produto</th>
+                <th width="5%" data-field="name">Data</th>
+                <th width="20%" data-field="name">Cliente</th>
+                <th width="5%" data-field="name">NF</th>
+                <th width="15%" data-field="name">Produto</th>
                 <th width="10%" data-field="name">Quantidade</th>
-                <th width="10%" data-field="">Ação</th>
+                <th width="10%">Chassi</th>
+                <th width="25%">Observação</th>
+                <th width="3%" data-field="">Ação</th>
             </tr>
         </thead>
         <tbody>
@@ -63,9 +65,11 @@
                 <tr>
                     <td align="center"> {{ date('d/m/Y',strtotime($movimento->data)) }} </td>
                     <td align="">{{ $movimento->nome }}  </td>
-                    <td align="">{{ $movimento->doc }}  </td>
+                    <td align="right">{{ $movimento->doc }}  </td>
                     <td align="">{{ $movimento->produto }}  </td>
-                    <td align="">{{ $movimento->quantidade }}  </td>
+                    <td align="right">{{ $movimento->quantidade }}  </td>
+                    <td> </td>
+                    <td> </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">

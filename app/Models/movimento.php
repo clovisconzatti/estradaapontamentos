@@ -17,6 +17,8 @@ class movimento extends Model
         , 'produto'
         , 'movimento'
         , 'quantidade'
+        , 'obs'
+        , 'chassi'
 
     ];
 

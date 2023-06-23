@@ -49,7 +49,6 @@ class movimentoController extends Controller
                                     ,'movimento.pessoa'
                                     ,'pessoa.nome'
                                     ,'movimento.doc'
-                                    ,'produto.id'
                                     ,'produto.produto'
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'

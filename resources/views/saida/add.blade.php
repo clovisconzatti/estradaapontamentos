@@ -13,11 +13,11 @@
         <div class="row">
             <div class="form-group col-md-2">
                 Data
-                <input class="form-control" type="date" name="data" id="data" value="{{date('Y-m-d')}}">
+                <input class="form-control" type="date" name="data" id="data" value="{{date('Y-m-d')}}" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-7">
                 Cliente
-                <select class="form-control limpar" type="text" name="cliente" id="pessoa">
+                <select class="form-control limpar" type="text" name="cliente" id="pessoa" required>
                     <option value="%">Todas</option>
                     @foreach ($clientes as $cliente )
                         <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
@@ -41,8 +41,16 @@
                 Quantidade
                 <input class="form-control" type="text" name="quantidade" id="quantidade">
             </div>
-        </div>
-            <div class="row">
+            <div class="form-group col-md-3">
+                Chassi
+                <input class="form-control limpar" type="" name="chassi" id="chassi" >
+            </div>
+            <div class="form-group col-md-11">
+            Observação
+            <textarea class="form-control limpar" type="text" name="obs" id="obs" maxLength="100" role="3"></textarea>
+            </div>
+            </div>
+                <div class="row">
             <div class="form-group col-md-3">
                 <button type="submit" name="salvar" value="" id="salvar" class="btn btn-success btn-block">
                     <span class="fas fa-save"></span> Salvar
