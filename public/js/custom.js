@@ -232,6 +232,7 @@ $(document).ready(function(){
         var pessoa = $(this).find('#pessoa').val();
         var doc = $(this).find('#doc').val();
         var produto = $(this).find('#produto').val();
+        var obs= $(this).find('#obs').val();
         var movimento = 'E';
         var quantidade = $(this).find('#quantidade').val();
 
@@ -250,6 +251,7 @@ $(document).ready(function(){
                 ,'produto'      : produto
                 ,'movimento'    : movimento
                 ,'quantidade'   : quantidade
+                ,'obs'          : obs
             }
             grava(dados,route,type,origem);
         }
@@ -265,6 +267,8 @@ $(document).ready(function(){
     var pessoa = $(this).find('#pessoa').val();
     var doc = $(this).find('#doc').val();
     var produto = $(this).find('#produto').val();
+    var obs = $(this).find('#obs').val();
+    var chassi = $(this).find('#chassi').val();
     var movimento = 'S';
     var quantidade = $(this).find('#quantidade').val();
 
@@ -283,6 +287,8 @@ $(document).ready(function(){
             ,'produto'      : produto
             ,'movimento'    : movimento
             ,'quantidade'   : quantidade
+            ,'obs'          : obs
+            ,'chassi'       : chassi
         }
         grava(dados,route,type,origem);
     }

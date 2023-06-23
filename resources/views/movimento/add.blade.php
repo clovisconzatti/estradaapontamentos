@@ -43,7 +43,7 @@
             </div>
                 <div class="form-group col-md-11">
             Observação
-            <textarea class="form-control limpar" type="text" name="obs" id="obs" maxLength="100" role="3"></textarea>
+            <textarea class="form-control limpar" type="text" name="obs" id="obs" maxLength="255" role="3"></textarea>
             </div>
         </div>
             <div class="row">
