@@ -87,8 +87,9 @@ class movimentoController extends Controller
     public function formEdit($id)
     {
         $movimento = movimento::where('id','=',$id)->first();
-
-        return view('movimento.edit' , compact('movimento'));
+        $fornecedores = pessoa::where('fornecedor','Sim')->orderBy('nome')->get();
+        $produtos = produto::orderBy('produto')->get();
+        return view('movimento.edit' , compact('movimento','fornecedores','produtos'));
     }
 
     public function edit($id, Request $request)

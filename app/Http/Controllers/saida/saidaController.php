@@ -78,8 +78,9 @@ class saidaController extends Controller
     public function formEdit($id)
     {
         $saida = movimento::where('id','=',$id)->first();
-
-        return view('saida.edit' , compact('saida'));
+        $clientes = pessoa::where('cliente','Sim')->get();
+        $produtos = produto::get();
+        return view('saida.edit' , compact('saida','clientes','produtos'));
     }
 
     public function edit($id, Request $request)

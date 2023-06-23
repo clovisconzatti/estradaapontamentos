@@ -5,31 +5,31 @@
     <form action="" id="cadastro-saida" nome="cadastro-saida" method="post">
         @csrf
         @method('patch')
-        <input type="hidden" name="route" id="route" value="/saida/edit/{{$movimento->id}}">
+        <input type="hidden" name="route" id="route" value="/saida/edit/{{$saida->id}}">
         <input type="hidden" name="type" id="type" value="PATCH">
         <input type="hidden" name="origem" id="origem" value="saida">
         <div class="row">
             <div class="form-group col-md-2">
                 Data
-                <input class="form-control" type="text" name="data" id="data">
+                <input class="form-control" type="text" name="data" id="data" value="{{ $saida->data }}" >
             </div>
             <div class="form-group col-md-6">
                 Fornecedor
-                <select class="form-control limpar" type="text" name="fornecedor" id="fornecedor">
-                    <option value="%">Todas</option>
-                    @foreach ($pessoas as $pessoa )
+                <select class="form-control limpar" type="text" name="fornecedor" id="fornecedor" value="{{ $saida->pessoa }}">
+                    {{-- <option value="%">Todas</option> --}}
+                    @foreach ($clientes as $pessoa )
                         <option value="{{ $pessoa->id }}">{{ $pessoa->nome }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-2">
                 NF
-                <input class="form-control" type="text" name="nf" id="nf">
+                <input class="form-control" type="text" name="nf" id="nf" value="{{ $saida->doc }}">
             </div>
             <div class="form-group col-md-6">
                 Produto
-                <select class="form-control limpar" type="text" name="produto" id="produto">
-                    <option value="%">Todas</option>
+                <select class="form-control limpar" type="text" name="produto" id="produto" value="{{ $saida->produto }}">
+                    {{-- <option value="%">Todas</option> --}}
                     @foreach ($produtos as $produto )
                         <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
                     @endforeach
@@ -37,8 +37,9 @@
             </div>
             <div class="form-group col-md-2">
                 Quantidade
-                <input class="form-control" type="text" name="quantidade" id="quantidade">
+                <input class="form-control" type="text" name="quantidade" id="quantidade" value="{{ $saida->quantidade }}">
             </div>
+        </div>
         <div class="row">
             <div class="form-group col-md-3">
                 <button type="submit" name="salvar" value="{{$pessoa->id}}" id="salvar" class="btn btn-success btn-block">
