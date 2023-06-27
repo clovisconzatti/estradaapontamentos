@@ -39,10 +39,11 @@ class saidaController extends Controller
                                     ,'movimento.pessoa'
                                     ,'pessoa.nome'
                                     ,'movimento.doc'
-                                    ,'produto.id'
                                     ,'produto.produto'
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'
+                                    ,'movimento.obs'
+                                    ,'movimento.chassi'
                                 ]);
 
         return view('saida.listAll' , compact('saidas','clientes','produtos','filtroDtInicial','filtroDtFinal'));
@@ -67,8 +68,10 @@ class saidaController extends Controller
                 ,"produto"      => $request->produto
                 ,"movimento"    => $request->movimento
                 ,"quantidade"   => $request->quantidade
+                ,"obs"          => $request->obs
+                ,"chassi"       => $request->chassi
             ]);
-            $saida->save();
+             $saida->save();
         }catch(\Exception $e){
             return response()->json($saida);
         }
@@ -94,7 +97,9 @@ class saidaController extends Controller
             $saida->produto     = $request->produto;
             $saida->movimento   = $request->movimento;
             $saida->quantidade  = $request->quantidade;
-            $saida->save();
+            $saida->obs         = $request->obs;
+            $saida->chassi      = $request->chassi;
+                    $saida->save();
         }catch(\Exception $e){
             return response()->json($saida);
         }

@@ -38,6 +38,11 @@
                 <input class="form-control limpar" type="" name="quantidade" id="quantidade" value="{{ $movimento->quantidade }}" >
             </select>
             </div>
+            <div class="form-group col-md-11">
+                Observação
+                <input class="form-control limpar" type="" name="obs" id="obs" value="{{ $movimento->obs }}" >
+            </select>
+            </div>
         </div>
         <div class="row">
             <div class="form-group col-md-3">

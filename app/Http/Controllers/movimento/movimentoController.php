@@ -52,8 +52,9 @@ class movimentoController extends Controller
                                     ,'produto.produto'
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'
+                                    ,'movimento.obs'
                                 ]);
-        // dd($movimentos);
+        //  dd($movimentos);
         return view('movimento.listAll' , compact('movimentos','fornecedores','produtos','filtrofornecedor','filtroproduto'));
     }
 
@@ -75,6 +76,7 @@ class movimentoController extends Controller
                 ,"produto"      => $request->produto
                 ,"movimento"    => $request->movimento
                 ,"quantidade"   => $request->quantidade
+                ,"obs"          => $request->obs
                 ]);
             $movimento->save();
         }catch(\Exception $e){
@@ -102,6 +104,7 @@ class movimentoController extends Controller
             $movimento->produto     = $request->produto;
             $movimento->movimento   = $request->movimento;
             $movimento->quantidade  = $request->quantidade;
+            $movimento->obs  = $request->obs;
             $movimento->save();
         }catch(\Exception $e){
             return response()->json($movimento);

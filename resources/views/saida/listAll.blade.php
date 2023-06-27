@@ -68,8 +68,8 @@
                     <td align="right">{{ $movimento->doc }}  </td>
                     <td align="">{{ $movimento->produto }}  </td>
                     <td align="right">{{ $movimento->quantidade }}  </td>
-                    <td> </td>
-                    <td> </td>
+                    <td align="right">{{ $movimento->chassi }}  </td>
+                    <td align="left">{{ $movimento->obs }}  </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">

@@ -69,11 +69,11 @@
         <thead>
             <tr>
                 <th width="8%">Data</th>
-                <th width="20%">Fornecedor</th>
+                <th width="15%">Fornecedor</th>
                 <th width="8%">NF</th>
                 <th width="15%">Produto</th>
-                <th width="5%">Quantidade</th>
-                <th width="25%">Observação</th>
+                <th width="3%">Quantidade</th>
+                <th width="20%">Observação</th>
                 <th width="3%">Ação</th>
             </tr>
         </thead>
@@ -85,7 +85,7 @@
                     <td align="right">{{ $movimento->doc }}  </td>
                     <td>{{ $movimento->produto }}  </td>
                     <td align="right">{{ $movimento->quantidade }}  </td>
-                    <td></td>
+                    <td align="left">{{ $movimento->obs }}  </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">
