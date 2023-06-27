@@ -18,7 +18,7 @@
                 <select class="form-control limpar" type="text" name="fornecedor" id="fornecedor" value="{{ $saida->pessoa }}">
                     {{-- <option value="%">Todas</option> --}}
                     @foreach ($clientes as $pessoa )
-                        <option value="{{ $pessoa->id }}">{{ $pessoa->nome }}</option>
+                        <option value="{{ $pessoa->id }}"{{ ($pessoa->id == $saida->pessoa)? 'selected' : '' }}>{{ $pessoa->nome }}</option>
                     @endforeach
                 </select>
             </div>
@@ -31,7 +31,7 @@
                 <select class="form-control limpar" type="text" name="produto" id="produto" value="{{ $saida->produto }}">
                     {{-- <option value="%">Todas</option> --}}
                     @foreach ($produtos as $produto )
-                        <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
+                        <option value="{{ $produto->id }}"{{ ($produto->id == $saida->produto)? 'selected' : '' }}>{{ $produto->produto }}</option>
                     @endforeach
                 </select>
             </div>

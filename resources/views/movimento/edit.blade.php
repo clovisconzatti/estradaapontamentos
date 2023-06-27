@@ -11,25 +11,25 @@
         <div class="row">
             <div class="form-group col-md-2">
                 Data
-                <input class="form-control" type="date" name="data" id="data" value="{{ $movimento->data }}">
+                <input class="form-control" type="date" name="data" id="data" value="{{ $movimento->data }}" >
             </div>
             <div class="form-group col-md-6">
                 Fornecedor
-                <select class="form-control" type="text" name="pessoa" id="pessoa" value="{{ $movimento->pessoa }}">
+                <select class="form-control" type="text" name="pessoa" id="pessoa" value="{{ $movimento->pessoa }}" >
                     @foreach ($fornecedores as $fornecedor )
-                        <option value="{{ $fornecedor->id }}">{{ $fornecedor->nome }}</option>
+                        <option value="{{ $fornecedor->id }}" {{ ($fornecedor->id == $movimento->pessoa)? 'selected' : '' }}>{{ $fornecedor->nome }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group col-md-2">
                 NF
-                <input class="form-control limpar" type="text" name="doc" id="doc" value="{{ $movimento->doc }}">
+                <input class="form-control limpar" type="text" name="doc" id="doc" value="{{ $movimento->doc }}" >
             </div>
             <div class="form-group col-md-6">
                 Produto
                 <select class="form-control limpar" type="text" name="produto" id="produto" value="{{ $movimento->produto }}" >
                     @foreach ($produtos as $produto )
-                        <option value="{{ $produto->id }}">{{ $produto->produto }}</option>
+                        <option value="{{ $produto->id }}"{{ ($produto->id == $movimento->produto)? 'selected' : '' }}>{{ $produto->produto }}</option>
                     @endforeach
                 </select>
             </div>
