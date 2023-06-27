@@ -14,8 +14,8 @@
                 <input class="form-control" type="text" name="data" id="data" value="{{ $saida->data }}" >
             </div>
             <div class="form-group col-md-6">
-                Fornecedor
-                <select class="form-control limpar" type="text" name="fornecedor" id="fornecedor" value="{{ $saida->pessoa }}">
+                Cliente
+                <select class="form-control limpar" type="text" name="cliente" id="pessoa" value="{{ $saida->pessoa }}">
                     {{-- <option value="%">Todas</option> --}}
                     @foreach ($clientes as $pessoa )
                         <option value="{{ $pessoa->id }}"{{ ($pessoa->id == $saida->pessoa)? 'selected' : '' }}>{{ $pessoa->nome }}</option>
