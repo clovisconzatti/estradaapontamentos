@@ -54,6 +54,7 @@
     <table class="table table-bordered table-condensed table-striped">
         <thead>
             <tr>
+                <th width="10%" data-field="name">Codigo</th>
                 <th width="30%" data-field="name">Produto</th>
                 <th width="10%" data-field="name">Quantidade</th>
 
@@ -62,6 +63,7 @@
         <tbody>
             @foreach ($saldo as $movimento)
                 <tr>
+                    <td align="left">{{ $movimento->codfocco }}  </td>
                     <td align="">{{ $movimento->produto }}  </td>
                     <td align="right">{{ number_format($movimento->quantidade,2,',','.') }}  </td>
                 </tr>

@@ -39,6 +39,7 @@ class saidaController extends Controller
                                     ,'movimento.pessoa'
                                     ,'pessoa.nome'
                                     ,'movimento.doc'
+                                    ,'produto.codfocco'
                                     ,'produto.produto'
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'
@@ -65,6 +66,7 @@ class saidaController extends Controller
                 ,"data"         => $request->data
                 ,"pessoa"       => $request->pessoa
                 ,"doc"          => $request->doc
+                ,"codfocco"     => $request->codfocco
                 ,"produto"      => $request->produto
                 ,"movimento"    => $request->movimento
                 ,"quantidade"   => $request->quantidade
@@ -94,6 +96,7 @@ class saidaController extends Controller
             $saida->data        = $request->data;
             $saida->pessoa      = $request->pessoa;
             $saida->doc         = $request->doc;
+            $saida->codfocco    = $request->codfocco;
             $saida->produto     = $request->produto;
             $saida->movimento   = $request->movimento;
             $saida->quantidade  = $request->quantidade;

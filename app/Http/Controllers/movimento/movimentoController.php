@@ -49,6 +49,7 @@ class movimentoController extends Controller
                                     ,'movimento.pessoa'
                                     ,'pessoa.nome'
                                     ,'movimento.doc'
+                                    ,'produto.codfocco'
                                     ,'produto.produto'
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'
@@ -73,6 +74,7 @@ class movimentoController extends Controller
                 ,"data"         => $request->data
                 ,"pessoa"       => $request->pessoa
                 ,"doc"          => $request->doc
+                ,"codfocco"     => $request->codfocco
                 ,"produto"      => $request->produto
                 ,"movimento"    => $request->movimento
                 ,"quantidade"   => $request->quantidade
@@ -101,6 +103,7 @@ class movimentoController extends Controller
             $movimento->data        = $request->data;
             $movimento->pessoa      = $request->pessoa;
             $movimento->doc         = $request->doc;
+            $movimento->codfocco    = $request->codfocco;
             $movimento->produto     = $request->produto;
             $movimento->movimento   = $request->movimento;
             $movimento->quantidade  = $request->quantidade;

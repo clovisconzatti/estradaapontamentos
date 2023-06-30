@@ -39,7 +39,8 @@ class saldoController extends Controller
                                 ->orderBy('produto.produto')
                                 ->groupBy('produto.produto')
                                 ->get([
-                                    'produto.produto'
+                                    'produto.codfocco'
+                                    ,'produto.produto'
                                     ,DB::raw("sum(case when movimento.movimento ='S' then -movimento.quantidade else movimento.quantidade end) as quantidade")
                                 ]);
         // dd($filtros,$saldo);
@@ -73,7 +74,8 @@ class saldoController extends Controller
                                 ->orderBy('produto.produto')
                                 ->groupBy('produto.produto')
                                 ->get([
-                                    'produto.produto'
+                                    'produto.codfocco'
+                                    ,'produto.produto'
                                     ,DB::raw("sum(case when movimento.movimento ='S' then -movimento.quantidade else movimento.quantidade end) as quantidade")
                                 ]);
         // dd($filtros,$saldo);

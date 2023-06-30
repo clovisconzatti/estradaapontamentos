@@ -71,6 +71,7 @@
                 <th width="8%">Data</th>
                 <th width="15%">Fornecedor</th>
                 <th width="8%">NF</th>
+                <th width="8%">Codigo</th>
                 <th width="15%">Produto</th>
                 <th width="3%">Quantidade</th>
                 <th width="20%">Observação</th>
@@ -78,11 +79,18 @@
             </tr>
         </thead>
         <tbody>
+            @php
+                $totalquantidade = 0;
+            @endphp
             @foreach ($movimentos as $movimento)
+                @php
+                    $totalquantidade+=$movimento->quantidade;
+                @endphp
                 <tr>
                     <td align="center"> {{ date('d/m/Y',strtotime($movimento->data)) }} </td>
                     <td>{{ $movimento->nome }}  </td>
                     <td align="right">{{ $movimento->doc }}  </td>
+                    <td align="left">{{ $movimento->codfocco }}  </td>
                     <td>{{ $movimento->produto }}  </td>
                     <td align="right">{{ $movimento->quantidade }}  </td>
                     <td align="left">{{ $movimento->obs }}  </td>
@@ -106,6 +114,15 @@
                 </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr bgColor="#c3c3c3" class="font-12">
+                <td colspan="5">Total de Entradas</td>
+                <td align="right">
+                    {{number_format($totalquantidade,2,',','.')}}
+                </td>
+                <td colspan="8"></td>
+            </tr>
+        </tfoot>
     </table>
 @endsection
 

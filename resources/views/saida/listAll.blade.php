@@ -53,6 +53,7 @@
                 <th width="5%" data-field="name">Data</th>
                 <th width="20%" data-field="name">Cliente</th>
                 <th width="5%" data-field="name">NF</th>
+                <th width="5%" data-field="name">Codigo</th>
                 <th width="15%" data-field="name">Produto</th>
                 <th width="10%" data-field="name">Quantidade</th>
                 <th width="10%">Chassi</th>
@@ -61,11 +62,18 @@
             </tr>
         </thead>
         <tbody>
+            @php
+            $totalquantidade = 0;
+        @endphp
             @foreach ($saidas as $movimento)
+            @php
+            $totalquantidade+=$movimento->quantidade;
+            @endphp
                 <tr>
                     <td align="center"> {{ date('d/m/Y',strtotime($movimento->data)) }} </td>
                     <td align="">{{ $movimento->nome }}  </td>
                     <td align="right">{{ $movimento->doc }}  </td>
+                    <td align="left">{{ $movimento->codfocco }}  </td>
                     <td align="">{{ $movimento->produto }}  </td>
                     <td align="right">{{ $movimento->quantidade }}  </td>
                     <td align="right">{{ $movimento->chassi }}  </td>
@@ -98,6 +106,15 @@
             </tr>
             @endforeach
         </tbody>
+        <tfoot>
+            <tr bgColor="#c3c3c3" class="font-12">
+                <td colspan="5">Total de Saidas</td>
+                <td align="right">
+                    {{number_format($totalquantidade,2,',','.')}}
+                </td>
+                <td colspan="8"></td>
+            </tr>
+        </tfoot>
     </table>
 @endsection
 
