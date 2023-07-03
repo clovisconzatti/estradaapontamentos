@@ -37,7 +37,7 @@ class saldoController extends Controller
         $saldo = movimento::leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
                                 ->orderBy('produto.produto')
-                                ->groupBy('produto.produto')
+                                ->groupBy('produto.codfocco','produto.produto')
                                 ->get([
                                     'produto.codfocco'
                                     ,'produto.produto'
