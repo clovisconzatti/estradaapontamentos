@@ -12,6 +12,11 @@ use \Mpdf\Mpdf as PDF;
 
 class saldoController extends Controller
 {
+
+    public function teste(Request $request ){
+        dd('aqui');
+    }
+
     public function listAll(Request $request ){
         $filtros = [];
 

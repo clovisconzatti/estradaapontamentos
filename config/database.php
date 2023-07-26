@@ -90,15 +90,20 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-        /*'foccoOracle' => [
-            'driver' => 'odbc',
-            'dsn' => 'Driver={iSeries Access ODBC Driver};System=my_system_name;',
-            'grammar' => 'DB2',
-            'username' => 'foo',
-            'password' => 'bar',
-            'database' => '',
-            'grammar' => 'SqlServerGrammar',
-        ],*/
+        'oracle' => [
+            'driver'   => 'oracle',
+            'tns'      => env('DB_TNS', ''),
+            'host'     => env('DB_HOST', ''),
+            'port'     => env('DB_PORT', '1521'),
+            'database' => env('DB_DATABASE', ''),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
+            'charset'  => env('DB_CHARSET', 'AL32UTF8'),
+            'prefix'   => env('DB_PREFIX', ''),
+            'options'   => [
+                PDO::ATTR_PERSISTENT => true,
+            ],
+    ],
 
     ],
 
