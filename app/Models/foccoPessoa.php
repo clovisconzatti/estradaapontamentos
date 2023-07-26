@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class foccoPessoa extends Model
 {
     use HasFactory;
-    protected $connection = 'foccoOracle';
+    protected $connection = 'oracle';
 
     protected $fillable=[
-        'FIL_Codigo'
+        'ID'
+        , 'COD_CLI'
+        , 'DESCRICAO'
 
     ];
-    protected $primaryKey = 'FIL_Codigo';
-    protected $table = 'FIL_EMPRESA';
+    protected $primaryKey = 'ID';
+    protected $table = 'TCLIENTES';
     public $timestamps = false;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\saldo;
 
 use App\Http\Controllers\Controller;
+use App\Models\foccoPessoa;
 use App\Models\movimento;
 use App\Models\produto;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class saldoController extends Controller
 {
 
     public function teste(Request $request ){
-        dd('aqui');
+        $cliente = foccoPessoa::get();
+        dd($cliente);
     }
 
     public function listAll(Request $request ){
