@@ -92,7 +92,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('saldo',[saldoController::class,'listAll'])->name('saldo.listAll');
         Route::get('saldo/pdf',[saldoController::class,'pdf'])->name('saldo.pdf');
 
-        Route::get('teste',[saldoController::class,'teste'])->name('saldo.teste');
+        Route::get('saldo/teste',[saldoController::class,'teste'])->name('saldo.teste');
     });
 
 
