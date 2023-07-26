@@ -90,7 +90,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-        'oracle' => [
+        'fooco' => [
             'driver'   => 'oracle',
             'tns'      => env('DB_TNS', ''),
             'host'     => env('DB_HOST_FOCCO', ''),
