@@ -19,8 +19,9 @@ class saldoController extends Controller
     public function teste(Request $request ){
 
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
-        dd($pessoa->codfocco);
-        $cliente = foccoPessoa::get();
+        // dd($pessoa->codfocco);
+        $cliente = foccoPessoa::where('COD_CLI','not in',(10))->get();
+        dd($cliente);
         $fornecedor = foccoFornecedor::get();
 
 
