@@ -25,8 +25,8 @@ class atualizaPessoa implements ShouldQueue
 
     public function handle()
     {
-        $codCli = '';
-        $codFor = '';
+        $codCli = [];
+        $codFor = [];
         $insert = [];
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
         foreach( $pessoa as $item )
