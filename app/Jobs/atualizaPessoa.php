@@ -33,6 +33,7 @@ class atualizaPessoa implements ShouldQueue
         {
             $codCli =array($item->codfocco);
         }
+        dd($codCli);
         $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
         foreach($cliente as  $cli)
         {
