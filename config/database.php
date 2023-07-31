@@ -92,7 +92,7 @@ return [
         ],
         'focco' => [
             'driver' => 'odbc',
-            'dsn' => '64Estrada', // odbc: will be prefixed
+            'dsn' => '64Estrada;UID=FOCCO_CONSULTA;PWD=CONSULTA3I08;DBQ=172.168.246.205/F3IPRO;DBA=W;APA=T;EXC=F;FEN=T;QTO=T;FRC=10;FDL=10;LOB=T;RST=T;BTD=F;BNF=F;BAM=IfAllSuccessful;NUM=NLS;DPM=F;MTS=T;MDI=F;CSR=F;FWC=F;FBS=64000;TLO=O;MLD=0;ODA=F;STE=F;TSZ=8192;AST=FLOAT;', // odbc: will be prefixed
             'username' => 'FOCCO_CONSULTA',
             'password' => 'CONSULTA3I08'
         ],
