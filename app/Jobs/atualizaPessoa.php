@@ -42,18 +42,16 @@ class atualizaPessoa implements ShouldQueue
                 , 'cliente'     =>'Sim'
                 , 'fornecedor'  =>'Não'
             ]);
-            // $insert[] = array($NewPessoa);
             $NewPessoa->save();
         }
 
         $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
-        $fornecedor = foccoFornecedor::get();
-        foreach( $fornecedor as $item )
+        foreach( $pessoa as $item )
         {
             $codFor[] =$item->codfocco;
         }
-        $cliente = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
-        foreach($cliente as  $cli)
+        $fornecedor = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
+        foreach($fornecedor as  $cli)
         {
             $NewPessoa = new pessoa([
                 'codfocco'      =>$cli->COD_FOR
@@ -62,9 +60,7 @@ class atualizaPessoa implements ShouldQueue
                 , 'fornecedor'  =>'Sim'
             ]);
             $NewPessoa->save();
-            // $insert[] = array($NewPessoa);
         }
-        dd($insert);
     }
 
 }
