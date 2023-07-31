@@ -20,7 +20,7 @@ class saldoController extends Controller
 
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
         // dd($pessoa->codfocco);
-        $cliente = foccoPessoa::where('COD_CLI','not in',(10))->get();
+        $cliente = foccoPessoa::whereNotIn('COD_CLI',[10])->get();
         dd($cliente);
         $fornecedor = foccoFornecedor::get();
 
