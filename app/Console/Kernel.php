@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-            // atualizaPessoa::dispatch();
+            atualizaPessoa::dispatch();
             atualizaForencedor::dispatch();
         })->everyMinute();
     }

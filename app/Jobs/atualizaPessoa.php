@@ -35,13 +35,18 @@ class atualizaPessoa implements ShouldQueue
         $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
         foreach($cliente as  $cli)
         {
-            $NewPessoa = new pessoa([
-                'codfocco'      =>$cli->COD_CLI
-                , 'nome'        =>$cli->DESCRICAO
-                , 'cliente'     =>'Sim'
-                , 'fornecedor'  =>'Não'
-            ]);
-            $NewPessoa->save();
+            try{
+                $NewPessoa = new pessoa([
+                    'codfocco'      =>$cli->COD_CLI
+                    , 'nome'        =>$cli->DESCRICAO
+                    , 'cliente'     =>'Sim'
+                    , 'fornecedor'  =>'Não'
+                ]);
+                $NewPessoa->save();
+            }catch(\Exception $e){
+                dd($e);
+            }
+
         };
 
     }
