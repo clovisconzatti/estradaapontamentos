@@ -92,7 +92,7 @@ return [
         ],
         'focco' => [
             'driver'   => 'oracle',
-            // 'tns'      => env('DB_TNS', ''),
+            'tns'      => env('DB_TNS', ''),
             'host'     => env('DB_HOST_FOCCO', ''),
             'port'     => env('DB_PORT_FOCCO', ''),
             'database' => env('DB_DATABASE_FOCCO', ''),

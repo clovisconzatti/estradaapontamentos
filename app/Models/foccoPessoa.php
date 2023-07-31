@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class foccoPessoa extends Model
 {
     use HasFactory;
-    protected $connection = 'oracle';
+    protected $connection = 'focco';
 
     protected $fillable=[
         'ID'
