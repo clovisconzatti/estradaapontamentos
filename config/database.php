@@ -94,14 +94,16 @@ return [
             'driver'   => 'oracle',
             'tns'      => env('DB_TNS', ''),
             'host'     => env('DB_HOST_FOCCO', ''),
-            'port'     => env('DB_PORT_FOCCO', ''),
+            'port'     => env('DB_PORT_FOCCO', '1521'),
             'database' => env('DB_DATABASE_FOCCO', ''),
             'username' => env('DB_USERNAME_FOCCO', ''),
             'password' => env('DB_PASSWORD_FOCCO', ''),
-            'service_name' => env('DB_SERVICE_NAME', ''),
             'charset'  => env('DB_CHARSET', 'AL32UTF8'),
             'prefix'   => env('DB_PREFIX', ''),
-        ],
+            'options'   => [
+                PDO::ATTR_PERSISTENT => true,
+            ],
+    ],
 
     ],
 
