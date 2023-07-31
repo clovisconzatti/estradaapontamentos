@@ -25,14 +25,47 @@ class atualizaPessoa implements ShouldQueue
 
     public function handle()
     {
-        $this->cliente();
+        $codCli = '';
+        $codFor = '';
+        $insert = [];
+        $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
+        foreach( $pessoa as $item )
+        {
+            $codCli =array($item->codfocco);
+        }
+        $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
+        foreach($cliente as  $cli)
+        {
+            $NewPessoa = new pessoa([
+                'codfocco'      =>$cli->COD_CLI
+                , 'nome'        =>$cli->DESCRICAO
+                , 'cliente'     =>'Sim'
+                , 'fornecedor'  =>'Não'
+            ]);
+            $insert[] = array($NewPessoa);
+            // $NewPessoa->save();
+        }
+
+        $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
+        $fornecedor = foccoFornecedor::get();
+        foreach( $fornecedor as $item )
+        {
+            $codFor =array($item->codfocco);
+        }
+        $cliente = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
+        foreach($cliente as  $cli)
+        {
+            $NewPessoa = new pessoa([
+                'codfocco'      =>$cli->COD_FOR
+                , 'nome'        =>$cli->DESCRICAO
+                , 'cliente'     =>'Não'
+                , 'fornecedor'  =>'Sim'
+            ]);
+            // $NewPessoa->save();
+            $insert[] = array($NewPessoa);
+        }
+
+        dd($insert);
     }
 
-    public function cliente()
-    {
-        $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
-        dd($pessoa);
-        $cliente = foccoPessoa::get();
-        $fornecedor = foccoFornecedor::get();
-    }
 }
