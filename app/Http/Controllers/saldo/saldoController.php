@@ -19,7 +19,7 @@ class saldoController extends Controller
     public function teste(Request $request ){
 
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
-        dd($pessoa);
+        dd($pessoa->codfocco);
         $cliente = foccoPessoa::get();
         $fornecedor = foccoFornecedor::get();
 
