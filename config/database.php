@@ -90,7 +90,7 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-        'fooco' => [
+        'focco' => [
             'driver'   => 'oracle',
             'tns'      => env('DB_TNS', ''),
             'host'     => env('DB_HOST_FOCCO', ''),
@@ -103,7 +103,7 @@ return [
             'options'   => [
                 PDO::ATTR_PERSISTENT => true,
             ],
-    ],
+        ],
 
     ],
 
