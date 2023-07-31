@@ -25,14 +25,18 @@ class atualizaPessoa implements ShouldQueue
 
     public function handle()
     {
+        $this->cliente();
+        $this->fornecedor();
+    }
+    public function cliente()
+    {
         $codCli = [];
-        $codFor = [];
 
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
         foreach( $pessoa as $item )
         {
             $codCli[]=$item->codfocco;
-        }
+        };
         $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
         foreach($cliente as  $cli)
         {
@@ -43,8 +47,12 @@ class atualizaPessoa implements ShouldQueue
                 , 'fornecedor'  =>'Não'
             ]);
             $NewPessoa->save();
-        }
-        dd('aqui');
+        };
+
+    }
+    public function fornecedor()
+    {
+        $codFor = [];
         $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
         dd($pessoa);
         foreach( $pessoa as $item )
@@ -64,5 +72,4 @@ class atualizaPessoa implements ShouldQueue
             $NewPessoa->save();
         }
     }
-
 }
