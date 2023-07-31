@@ -33,7 +33,7 @@ class saldoController extends Controller
                 , 'cliente'     =>'Sim'
                 , 'fornecedor'  =>'Não'
             ]);
-            echo $NewPessoa;
+            echo $NewPessoa.'<br>';
             // $NewPessoa->save();
         }
 
@@ -53,7 +53,7 @@ class saldoController extends Controller
                 , 'fornecedor'  =>'Sim'
             ]);
             // $NewPessoa->save();
-            echo $NewPessoa;
+            echo $NewPessoa.'<br>';
 
         }
 
