@@ -42,8 +42,8 @@ class atualizaPessoa implements ShouldQueue
                 , 'cliente'     =>'Sim'
                 , 'fornecedor'  =>'Não'
             ]);
-            $insert[] = array($NewPessoa);
-            // $NewPessoa->save();
+            // $insert[] = array($NewPessoa);
+            $NewPessoa->save();
         }
 
         $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
@@ -61,10 +61,9 @@ class atualizaPessoa implements ShouldQueue
                 , 'cliente'     =>'Não'
                 , 'fornecedor'  =>'Sim'
             ]);
-            // $NewPessoa->save();
-            $insert[] = array($NewPessoa);
+            $NewPessoa->save();
+            // $insert[] = array($NewPessoa);
         }
-
         dd($insert);
     }
 
