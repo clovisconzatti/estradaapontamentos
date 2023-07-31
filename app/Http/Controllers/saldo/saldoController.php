@@ -18,15 +18,44 @@ class saldoController extends Controller
 
     public function teste(Request $request ){
         $codCli = '';
+        $codFor = '';
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
         foreach( $pessoa as $item )
         {
             $codCli =array($item->codfocco);
         }
         $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
-        dd($cliente);
-        $fornecedor = foccoFornecedor::get();
+        foreach($cliente as  $cli)
+        {
+            $NewPessoa = new pessoa([
+                'codfocco'      =>$cli->COD_CLI
+                , 'nome'        =>$cli->DESCRICAO
+                , 'cliente'     =>'Sim'
+                , 'fornecedor'  =>'Não'
+            ]);
+            echo $NewPessoa.'<br>';
+            // $NewPessoa->save();
+        }
 
+        $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
+        $fornecedor = foccoFornecedor::get();
+        foreach( $fornecedor as $item )
+        {
+            $codFor =array($item->codfocco);
+        }
+        $cliente = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
+        foreach($cliente as  $cli)
+        {
+            $NewPessoa = new pessoa([
+                'codfocco'      =>$cli->COD_FOR
+                , 'nome'        =>$cli->DESCRICAO
+                , 'cliente'     =>'Não'
+                , 'fornecedor'  =>'Sim'
+            ]);
+            // $NewPessoa->save();
+            echo $NewPessoa.'<br>';
+
+        }
 
     }
 
