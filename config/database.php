@@ -104,7 +104,7 @@ return [
             'options'   => [
                 PDO::ATTR_PERSISTENT => true,
             ],
-    ],
+        ],
 
     ],
 
