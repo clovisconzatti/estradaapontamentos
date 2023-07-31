@@ -100,6 +100,7 @@ return [
             'password' => env('DB_PASSWORD_FOCCO', ''),
             'charset'  => env('DB_CHARSET', 'AL32UTF8'),
             'prefix'   => env('DB_PREFIX', ''),
+            'service_name' => env('DB_SERVICE_NAME_FOCCO', ''),
             'options'   => [
                 PDO::ATTR_PERSISTENT => true,
             ],
