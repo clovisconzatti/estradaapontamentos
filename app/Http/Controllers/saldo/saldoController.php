@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\saldo;
 
 use App\Http\Controllers\Controller;
+use App\Models\foccoFornecedor;
 use App\Models\foccoPessoa;
 use App\Models\movimento;
+use App\Models\pessoa;
 use App\Models\produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +18,12 @@ class saldoController extends Controller
 
     public function teste(Request $request ){
 
+        $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
+        dd($pessoa);
         $cliente = foccoPessoa::get();
-        dd($cliente);
+        $fornecedor = foccoFornecedor::get();
+
+
     }
 
     public function listAll(Request $request ){
