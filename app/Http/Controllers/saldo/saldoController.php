@@ -16,9 +16,8 @@ class saldoController extends Controller
 
     public function teste(Request $request ){
 
-        dd(DB::connection('focco')->getPdo());
-        // $cliente = foccoPessoa::get();
-        // dd($cliente);
+        $cliente = foccoPessoa::get();
+        dd($cliente);
     }
 
     public function listAll(Request $request ){
