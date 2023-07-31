@@ -17,10 +17,13 @@ class saldoController extends Controller
 {
 
     public function teste(Request $request ){
-
+        $codCli = '';
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
-        // dd($pessoa->codfocco);
-        $cliente = foccoPessoa::whereNotIn('COD_CLI',[10])->get();
+        foreach( $pessoa as $item )
+        {
+            $codCli =array($item->codfocco);
+        }
+        $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
         dd($cliente);
         $fornecedor = foccoFornecedor::get();
 
