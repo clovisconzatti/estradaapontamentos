@@ -91,19 +91,10 @@ return [
             'prefix_indexes' => true,
         ],
         'focco' => [
-            'driver'   => 'oracle',
-            'tns'      => env('DB_TNS', ''),
-            'host'     => env('DB_HOST_FOCCO', ''),
-            'port'     => env('DB_PORT_FOCCO', '1521'),
-            'database' => env('DB_DATABASE_FOCCO', ''),
-            'username' => env('DB_USERNAME_FOCCO', ''),
-            'password' => env('DB_PASSWORD_FOCCO', ''),
-            'charset'  => env('DB_CHARSET', 'AL32UTF8'),
-            'prefix'   => env('DB_PREFIX', ''),
-            'service_name' => env('DB_SERVICE_NAME_FOCCO', ''),
-            'options'   => [
-                PDO::ATTR_PERSISTENT => true,
-            ],
+            'driver' => 'odbc',
+            'dsn' => '64Estrada', // odbc: will be prefixed
+            'username' => 'FOCCO_CONSULTA',
+            'password' => 'CONSULTA3I08'
         ],
 
     ],
