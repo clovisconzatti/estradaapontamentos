@@ -27,7 +27,7 @@ class atualizaPessoa implements ShouldQueue
     {
         $codCli = [];
         $codFor = [];
-        $insert = [];
+
         $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
         foreach( $pessoa as $item )
         {
@@ -50,6 +50,7 @@ class atualizaPessoa implements ShouldQueue
         {
             $codFor[] =$item->codfocco;
         }
+        dd($codFor);
         $fornecedor = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
         foreach($fornecedor as  $cli)
         {
