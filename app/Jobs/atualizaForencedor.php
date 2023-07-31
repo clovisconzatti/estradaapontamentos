@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Models\foccoFornecedor;
-use App\Models\foccoPessoa;
 use App\Models\pessoa;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -12,7 +11,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class atualizaPessoa implements ShouldQueue
+class atualizaForencedor implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -22,27 +21,27 @@ class atualizaPessoa implements ShouldQueue
         //
     }
 
-
     public function handle()
     {
-        $codCli = [];
-
-        $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
+        $codFor = [];
+        $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
+        dd($pessoa);
         foreach( $pessoa as $item )
         {
-            $codCli[]=$item->codfocco;
-        };
-        $cliente = foccoPessoa::whereNotIn('COD_CLI',$codCli)->get();
-        foreach($cliente as  $cli)
+            $codFor[] =$item->codfocco;
+        }
+        dd($codFor);
+        $fornecedor = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
+        foreach($fornecedor as  $cli)
         {
             $NewPessoa = new pessoa([
-                'codfocco'      =>$cli->COD_CLI
+                'codfocco'      =>$cli->COD_FOR
                 , 'nome'        =>$cli->DESCRICAO
-                , 'cliente'     =>'Sim'
-                , 'fornecedor'  =>'Não'
+                , 'cliente'     =>'Não'
+                , 'fornecedor'  =>'Sim'
             ]);
             $NewPessoa->save();
-        };
+        }
 
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\atualizaForencedor;
 use App\Jobs\atualizaPessoa;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function(){
             atualizaPessoa::dispatch();
+            atualizaForencedor::dispatch();
         })->everyMinute();
     }
 
