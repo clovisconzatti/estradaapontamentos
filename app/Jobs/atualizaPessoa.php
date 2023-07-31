@@ -2,6 +2,9 @@
 
 namespace App\Jobs;
 
+use App\Models\foccoFornecedor;
+use App\Models\foccoPessoa;
+use App\Models\pessoa;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -22,12 +25,14 @@ class atualizaPessoa implements ShouldQueue
 
     public function handle()
     {
-        $this->pessoa();
+        $this->cliente();
     }
 
-    public function pessoa()
+    public function cliente()
     {
-        // comando
-
+        $pessoa = pessoa::where('cliente','Sim')->get(['codfocco']);
+        dd($pessoa);
+        $cliente = foccoPessoa::get();
+        $fornecedor = foccoFornecedor::get();
     }
 }
