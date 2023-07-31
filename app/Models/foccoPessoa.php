@@ -17,6 +17,6 @@ class foccoPessoa extends Model
 
     ];
     protected $primaryKey = 'ID';
-    protected $table = 'TCLIENTES';
+    protected $table = 'FOCCO3I.TCLIENTES';
     public $timestamps = false;
 }
