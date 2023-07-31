@@ -25,12 +25,10 @@ class atualizaForencedor implements ShouldQueue
     {
         $codFor = [];
         $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
-        dd($pessoa);
         foreach( $pessoa as $item )
         {
             $codFor[] =$item->codfocco;
         }
-        dd($codFor);
         $fornecedor = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
         foreach($fornecedor as  $cli)
         {
