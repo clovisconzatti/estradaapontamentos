@@ -44,7 +44,7 @@ class atualizaPessoa implements ShouldQueue
             ]);
             $NewPessoa->save();
         }
-
+        dd('aqui');
         $pessoa = pessoa::where('fornecedor','Sim')->get(['codfocco']);
         dd($pessoa);
         foreach( $pessoa as $item )
