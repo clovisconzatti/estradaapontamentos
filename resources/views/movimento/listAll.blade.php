@@ -65,7 +65,7 @@
     </div>
     <p>
 
-    <table class="table table-bordered table-condensed table-striped">
+    <table class="table table-bordered table-condensed table-striped fonte-10">
         <thead>
             <tr>
                 <th width="8%">Data</th>
@@ -75,6 +75,8 @@
                 <th width="15%">Produto</th>
                 <th width="3%">Quantidade</th>
                 <th width="20%">Observação</th>
+                <th width="10%">Inclusão</th>
+                <th width="10%">Alteração</th>
                 <th width="3%">Ação</th>
             </tr>
         </thead>
@@ -94,6 +96,8 @@
                     <td>{{ $movimento->produto }}  </td>
                     <td align="right">{{ $movimento->quantidade }}  </td>
                     <td align="left">{{ $movimento->obs }}  </td>
+                    <td align="left">{{ $movimento->name }}  </td>
+                    <td align="left">{{ $movimento->users_alter }}  </td>
                     <td align="center">
                         <div class="btn-group-vertical">
                             <div class="btn-group">

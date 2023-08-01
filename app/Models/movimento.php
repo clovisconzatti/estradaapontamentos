@@ -19,6 +19,9 @@ class movimento extends Model
         , 'quantidade'
         , 'obs'
         , 'chassi'
+        , 'user_id'
+        , 'ativo'
+        , 'user_alteracao_id'
 
     ];
 

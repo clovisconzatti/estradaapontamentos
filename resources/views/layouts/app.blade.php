@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Breital</title>
+    <title>Estrada</title>
     <link rel="shortcut icon" href=" {{ asset('img/icon.png') }} ">
 
     <!-- Scripts -->

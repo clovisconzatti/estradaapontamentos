@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\movimento;
 use App\Models\pessoa;
 use App\Models\produto;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class saidaController extends Controller
 {
@@ -30,9 +33,11 @@ class saidaController extends Controller
         $produtos = produto::get();
         $saidas = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
                                 ->leftjoin('produto','produto.id','movimento.produto')
+                                ->leftJoin('users','users.id','movimento.user_id')
+                                ->leftJoin('users as usures_alter','usures_alter.id','movimento.user_alteracao_id')
                                 ->where($filtros)
                                 ->where('movimento.movimento','=','S')
-                                ->orderBy('data')
+                                ->orderBy('data','desc')
                                 ->get([
                                     'movimento.id'
                                     ,'movimento.data'
@@ -45,6 +50,10 @@ class saidaController extends Controller
                                     ,'movimento.quantidade'
                                     ,'movimento.obs'
                                     ,'movimento.chassi'
+                                    ,'movimento.user_id'
+                                    ,'users.name'
+                                    ,DB::raw("usures_alter.name as users_alter")
+
                                 ]);
 
         return view('saida.listAll' , compact('saidas','clientes','produtos','filtroDtInicial','filtroDtFinal'));
@@ -62,7 +71,8 @@ class saidaController extends Controller
     {
         try{
             $saida = new movimento([
-                "id"            => $request->id
+                "user_id"        => Auth::user()->id
+                ,"id"            => $request->id
                 ,"data"         => $request->data
                 ,"pessoa"       => $request->pessoa
                 ,"doc"          => $request->doc
@@ -73,7 +83,7 @@ class saidaController extends Controller
                 ,"obs"          => $request->obs
                 ,"chassi"       => $request->chassi
             ]);
-             $saida->save();
+            $saida->save();
         }catch(\Exception $e){
             return response()->json($saida);
         }
@@ -85,26 +95,26 @@ class saidaController extends Controller
         $saida = movimento::where('id','=',$id)->first();
         $clientes = pessoa::where('cliente','Sim')->get();
         $produtos = produto::get();
-        return view('saida.edit' , compact('saida','clientes','produtos'));
+        $user = user::get();
+        return view('saida.edit' , compact('saida','clientes','produtos','user'));
     }
 
     public function edit($id, Request $request)
     {
-
         try{
             $saida = movimento::find($id);
             $saida->data        = $request->data;
             $saida->pessoa      = $request->pessoa;
             $saida->doc         = $request->doc;
-            $saida->codfocco    = $request->codfocco;
             $saida->produto     = $request->produto;
             $saida->movimento   = $request->movimento;
             $saida->quantidade  = $request->quantidade;
             $saida->obs         = $request->obs;
             $saida->chassi      = $request->chassi;
-                    $saida->save();
+            $saida->user_alteracao_id = Auth::user()->id;
+            $saida->save();
         }catch(\Exception $e){
-            return response()->json($saida);
+            return response()->json($e);
         }
         return response()->json('success');
     }

@@ -235,6 +235,9 @@ $(document).ready(function(){
         var obs= $(this).find('#obs').val();
         var movimento = 'E';
         var quantidade = $(this).find('#quantidade').val();
+        var user_id = $(this).find('#user_id').val();
+        var ativo = $(this).find('#ativo').val();
+        var user_alteracao_id = $(this).find('#user_alteracao_id').val();
 
     /********************************************************************************************* */
         if(!data || !pessoa || !doc || !produto || !quantidade){
@@ -252,6 +255,9 @@ $(document).ready(function(){
                 ,'movimento'    : movimento
                 ,'quantidade'   : quantidade
                 ,'obs'          : obs
+                ,'user_id'      : user_id
+                ,'ativo'        : ativo
+                ,'user_alteracao_id' : user_alteracao_id
             }
             grava(dados,route,type,origem);
         }
@@ -271,6 +277,9 @@ $(document).ready(function(){
     var chassi = $(this).find('#chassi').val();
     var movimento = 'S';
     var quantidade = $(this).find('#quantidade').val();
+    var user_id = $(this).find('#user_id').val();
+    var ativo = $(this).find('#ativo').val();
+    var user_alteracao_id = $(this).find('#user_alteracao_id').val();
 
 /********************************************************************************************* */
     if(!data){
@@ -289,6 +298,9 @@ $(document).ready(function(){
             ,'quantidade'   : quantidade
             ,'obs'          : obs
             ,'chassi'       : chassi
+            ,'user_id'      : user_id
+            ,'ativo'        : ativo
+            ,'user_alteracao_id' : user_alteracao_id
         }
         grava(dados,route,type,origem);
     }

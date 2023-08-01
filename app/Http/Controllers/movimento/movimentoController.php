@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\movimento;
 use App\Models\pessoa;
 use App\Models\produto;
+use App\Models\User;
+use Database\Seeders\UserSeeder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class movimentoController extends Controller
 {
@@ -40,9 +44,11 @@ class movimentoController extends Controller
         $produtos = produto::get();
         $movimentos = movimento::leftjoin('pessoa','pessoa.id','movimento.pessoa')
                                 ->leftjoin('produto','produto.id','movimento.produto')
+                                ->leftJoin('users','users.id','movimento.user_id')
+                                ->leftJoin('users as usures_alter','usures_alter.id','movimento.user_alteracao_id')
                                 ->where($filtros)
                                 ->where('movimento.movimento','=','E')
-                                ->orderBy('data')
+                                ->orderBy('data','desc')
                                 ->get([
                                     'movimento.id'
                                     ,'movimento.data'
@@ -54,6 +60,9 @@ class movimentoController extends Controller
                                     ,'movimento.movimento'
                                     ,'movimento.quantidade'
                                     ,'movimento.obs'
+                                    ,'movimento.user_id'
+                                    ,'users.name'
+                                    ,DB::raw("usures_alter.name as users_alter")
                                 ]);
         //  dd($movimentos);
         return view('movimento.listAll' , compact('movimentos','fornecedores','produtos','filtrofornecedor','filtroproduto'));
@@ -70,7 +79,8 @@ class movimentoController extends Controller
     {
         try{
             $movimento = new movimento([
-                "id"            => $request->id
+                "user_id"       => Auth::user()->id
+                ,"id"           => $request->id
                 ,"data"         => $request->data
                 ,"pessoa"       => $request->pessoa
                 ,"doc"          => $request->doc
@@ -92,7 +102,8 @@ class movimentoController extends Controller
         $movimento = movimento::where('id','=',$id)->first();
         $fornecedores = pessoa::where('fornecedor','Sim')->orderBy('nome')->get();
         $produtos = produto::orderBy('produto')->get();
-        return view('movimento.edit' , compact('movimento','fornecedores','produtos'));
+        $user = user::orderBy('name')->get();
+        return view('movimento.edit' , compact('movimento','fornecedores','produtos','user'));
     }
 
     public function edit($id, Request $request)
@@ -103,11 +114,11 @@ class movimentoController extends Controller
             $movimento->data        = $request->data;
             $movimento->pessoa      = $request->pessoa;
             $movimento->doc         = $request->doc;
-            $movimento->codfocco    = $request->codfocco;
             $movimento->produto     = $request->produto;
             $movimento->movimento   = $request->movimento;
             $movimento->quantidade  = $request->quantidade;
-            $movimento->obs  = $request->obs;
+            $movimento->obs         = $request->obs;
+            $movimento->user_alteracao_id = Auth::user()->id;
             $movimento->save();
         }catch(\Exception $e){
             return response()->json($movimento);
