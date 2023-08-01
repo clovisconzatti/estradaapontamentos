@@ -44,7 +44,7 @@ class atualizaPessoa implements ShouldQueue
                 ]);
                 $NewPessoa->save();
             }catch(\Exception $e){
-                dd($e);
+                // dd($e);
             }
 
         };

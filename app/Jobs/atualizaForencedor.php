@@ -32,13 +32,18 @@ class atualizaForencedor implements ShouldQueue
         $fornecedor = foccoFornecedor::whereNotIn('COD_FOR',$codFor)->get();
         foreach($fornecedor as  $cli)
         {
-            $NewPessoa = new pessoa([
-                'codfocco'      =>$cli->COD_FOR
-                , 'nome'        =>$cli->DESCRICAO
-                , 'cliente'     =>'Não'
-                , 'fornecedor'  =>'Sim'
-            ]);
-            $NewPessoa->save();
+            try{
+                $NewPessoa = new pessoa([
+                    'codfocco'      =>$cli->COD_FOR
+                    , 'nome'        =>$cli->DESCRICAO
+                    , 'cliente'     =>'Não'
+                    , 'fornecedor'  =>'Sim'
+                ]);
+                $NewPessoa->save();
+            }catch(\Exception $e){
+                // dd($e);
+            }
+
         }
 
     }
