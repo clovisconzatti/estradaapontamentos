@@ -48,6 +48,7 @@ class movimentoController extends Controller
                                 ->leftJoin('users as usures_alter','usures_alter.id','movimento.user_alteracao_id')
                                 ->where($filtros)
                                 ->where('movimento.movimento','=','E')
+                                ->where('movimento.ativo','=','Sim')
                                 ->orderBy('data','desc')
                                 ->get([
                                     'movimento.id'

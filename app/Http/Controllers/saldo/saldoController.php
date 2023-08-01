@@ -83,6 +83,7 @@ class saldoController extends Controller
         $produtos = produto::get();
         $saldo = movimento::leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
+                                ->where('movimento.ativo','=','Sim')
                                 ->orderBy('produto.produto')
                                 ->groupBy('produto.codfocco','produto.produto')
                                 ->get([
@@ -118,6 +119,7 @@ class saldoController extends Controller
         $produtos = produto::get();
         $saldo = movimento::leftjoin('produto','produto.id','movimento.produto')
                                 ->where($filtros)
+                                ->where('movimento.ativo','=','Sim')
                                 ->orderBy('produto.produto')
                                 ->groupBy('produto.produto')
                                 ->get([
