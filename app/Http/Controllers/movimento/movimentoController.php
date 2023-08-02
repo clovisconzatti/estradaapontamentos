@@ -126,5 +126,13 @@ class movimentoController extends Controller
         }
         return response()->json('success');
     }
+
+    public function destroy(movimento $movimento)
+    {
+        $movimento->user_delete_id=Auth::user()->id;
+        $movimento->save();
+        $movimento->delete();
+        return redirect()->route('movimento.listAll');
+    }
     //
 }

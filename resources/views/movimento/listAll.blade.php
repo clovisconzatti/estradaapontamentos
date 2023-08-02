@@ -68,6 +68,7 @@
     <table class="table table-bordered table-condensed table-striped fonte-10">
         <thead>
             <tr>
+                <th width="5%">Nr. Movimento</th>
                 <th width="8%">Data</th>
                 <th width="15%">Fornecedor</th>
                 <th width="8%">NF</th>
@@ -89,6 +90,7 @@
                     $totalquantidade+=$movimento->quantidade;
                 @endphp
                 <tr>
+                    <td align="right">{{ $movimento->id }}  </td>
                     <td align="center"> {{ date('d/m/Y',strtotime($movimento->data)) }} </td>
                     <td>{{ $movimento->nome }}  </td>
                     <td align="right">{{ $movimento->doc }}  </td>
@@ -111,6 +113,13 @@
                                     <span>Editar</span>
                                 </a>
                                 <a class="dropdown-item" href="#">
+                                    <form action=" {{ route('movimento.destroy',['movimento'=> $movimento->id ]) }} " method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="hidden" name='operador' value=" {{ $movimento->id }} ">
+                                        <i class="far fa-trash-alt"></i>
+                                        <input type="submit" class="btn btn-default delete"  value="Eliminar">
+                                    </form>
                                 </a>
                             </div>
                         </div>

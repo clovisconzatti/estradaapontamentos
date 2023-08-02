@@ -11,6 +11,8 @@ class AddAlteracao extends Migration
     {
         Schema::table('movimento', function (Blueprint $table) {
             $table->integer('user_alteracao_id')->after('user_id')->nullable();
+            $table->integer('user_delete_id')->after('user_alteracao_id')->nullable();
+
         });
     }
 

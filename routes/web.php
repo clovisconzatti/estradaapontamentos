@@ -9,6 +9,7 @@ use App\Http\Controllers\produto\produtoController;
 use App\Http\Controllers\movimento\movimentoController;
 use App\Http\Controllers\saida\saidaController;
 use App\Http\Controllers\saldo\saldoController;
+use App\Http\Controllers\cancelamento\cancelamentoController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
@@ -94,7 +95,6 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('saldo/teste',[saldoController::class,'teste'])->name('saldo.teste');
     });
-
 
 
 });
