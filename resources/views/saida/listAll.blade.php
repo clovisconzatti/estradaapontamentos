@@ -97,13 +97,6 @@
                                     <span>Editar</span>
                                 </a>
                                 <a class="dropdown-item" href="#">
-                                    {{-- <form action=" {{ route('menu.destroy',['menu'=> $menu->id ]) }} " method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <input type="hidden" name='menu' value=" {{ $menu->id }} ">
-                                        <i class="far fa-trash-alt"></i>
-                                        <input type="submit" class="btn btn-default delete"  value="Eliminar">
-                                    </form> --}}
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <form action=" {{ route('movimento.destroy',['movimento'=> $movimento->id ]) }} " method="POST">
